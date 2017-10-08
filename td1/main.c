@@ -13,7 +13,7 @@ int main(){
   for ( i = 0 ; i < N ; i++ ){
     if ( (pid = fork()) == 0 ){
       exit(100+i);
-    }njilnl,ui
+    }
   }
 
   while ((pid = waitpid(-1, &status, 0)) > 0){
@@ -26,7 +26,7 @@ int main(){
         printf("Le fils %d s'est terminé avec le code %d.\n", pid , WEXITSTATUS(status));
         printf("Il s'agit en général d'un code d'erreur\n");
       }
-    }nupji,
+    }
     if (errno != ECHILD){
       perror("Erreur dans waitpid");
     }
