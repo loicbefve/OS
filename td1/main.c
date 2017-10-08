@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
+#include <wait.h>
 
 #define N 2
 
@@ -31,4 +32,5 @@ int main(){
     }
   }
   exit(0);
+//test
 }
