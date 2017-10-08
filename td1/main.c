@@ -26,7 +26,7 @@ int main(){
         printf("Le fils %d s'est terminé avec le code %d.\n", pid , WEXITSTATUS(status));
         printf("Il s'agit en général d'un code d'erreur\n");
       }
-    }
+    }nupji,
     if (errno != ECHILD){
       perror("Erreur dans waitpid");
     }
