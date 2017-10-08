@@ -32,5 +32,4 @@ int main(){
     }
   }
   exit(0);
-//test
 }
