@@ -13,7 +13,7 @@ int main(){
   for ( i = 0 ; i < N ; i++ ){
     if ( (pid = fork()) == 0 ){
       exit(100+i);
-    }njilnl,ui
+    }
   }
 
   while ((pid = waitpid(-1, &status, 0)) > 0){
