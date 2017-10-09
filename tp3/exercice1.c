@@ -13,11 +13,14 @@ void *hello( void* arg){
 int main(int argc, char *argv[]) {
   assert(argc==2);
   int n = atoi(argv[1]);
-  pthread_t thread[n];
+  pthread_t *thread = (pthread_t*) malloc( n * sizeof(pthread_t));
 
   for ( int i=0 ; i<n ; i++) {
     printf("Crée thread %d\n",i);
-    pthread_create(&thread[i], NULL, hello , (void *)NULL);
+    if( pthread_create(&thread[i], NULL, hello , (void *)NULL) == 11){
+      printf("Tu as créé trop de threads: Error 11\n");
+      exit(0);
+    }
   }
   for ( int i=0 ; i<n ; i++) {
     pthread_join(thread[i],NULL);
