@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
   assert(argc==2);
   int n = atoi(argv[1]);
   pthread_t *thread = (pthread_t*) malloc( n * sizeof(pthread_t));
-  int *ordre = malloc( n * sizeof(int));
+  int *ordre = (int*) malloc( n * sizeof(int));
 
   //Création des threads:
   for ( int i=0 ; i<n ; i++) {
