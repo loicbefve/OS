@@ -2,20 +2,29 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <wait.h>
-#include <semaphore.h>
+#include <pthread.h>
+#include <assert.h>
+
+void *hello( void* arg){
+    printf("%li : Hello world\n", pthread_self());
+    pthread_exit(NULL);
+}
 
 int main(int argc, char *argv[]) {
+  assert(argc==2);
   int n = atoi(argv[1]);
-  int synchro = semaphore(-n-1);
-  for( int i = 0 ; i < n ; i++ ){
-    if( !fork() ){
-      printf("Hello world %d\n", i );
-      V(synchro);
-    }
-    else{
-      P(synchro);
-    }
+  pthread_t thread[n];
+
+  for ( int i=0 ; i<n ; i++) {
+    printf("Crée thread %d\n",i);
+    pthread_create(&thread[i], NULL, hello , (void *)NULL);
   }
+  for ( int i=0 ; i<n ; i++) {
+    pthread_join(thread[i],NULL);
+  }
+  printf("Mes fils ont fini\n" );
+  pthread_exit(NULL);
+
 
   return 0;
 }
