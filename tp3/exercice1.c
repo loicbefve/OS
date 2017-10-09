@@ -6,7 +6,7 @@
 #include <assert.h>
 
 void *hello( void* arg){
-    printf("%li : Hello world\n", pthread_self());
+    printf("Thread:%li , Pid:%d : Hello world\n", pthread_self(),getpid());
     pthread_exit(NULL);
 }
 
